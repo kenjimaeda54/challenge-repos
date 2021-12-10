@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../../assets/Search.svg";
-import Card from "../../components/card";
+import Card from "../../components/cardRepo";
 import Header from "../../components/header";
 import Back from "../../assets/back.svg";
 import {

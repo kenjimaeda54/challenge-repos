@@ -10,7 +10,7 @@ export const Container = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &:hover {
-    opacity: 0.3;
+    opacity: 0.5;
   }
 `;
 
@@ -34,7 +34,6 @@ export const Description = styled.div`
   width: 813px;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
 `;
 
 export const TitleDescription = styled.h3`

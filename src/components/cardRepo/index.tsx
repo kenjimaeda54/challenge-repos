@@ -13,10 +13,10 @@ import {
 interface ICardProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   title: string;
   description: string;
-  imgRepo: string;
+  imgRepo?: string;
 }
 
-export default function Card({
+export default function CardRepo({
   title,
   description,
   imgRepo,
