@@ -1,7 +1,13 @@
+import { Fragment, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchIssue, fetchRepos } from "../../utils";
+import api from "../../services/api";
 import Header from "../../components/header";
+import Card from "../../components/cardDeveloper";
 import {
   Container,
   ContainerTop,
+  ContainerLoading,
   Body,
   WrapTitles,
   Title,
@@ -16,44 +22,85 @@ import {
   SectionSubTitle,
   SectionLanguage,
 } from "./styles";
-import Back from "../../assets/back.svg";
+import { Loading } from "../../components/loading";
 
 export default function Details(): JSX.Element {
+  const { repos, owner } = useParams();
+  const [languageIssue, setLanguageIssue] = useState("");
+  const [repoIssue, setRepoIssue] = useState<fetchIssue[]>([]);
+  const [repo, setRepo] = useState<fetchRepos>({} as fetchRepos);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const responseIssues = await api.get(
+          `/repos/${owner}/${repos}/issues?per_page=7`
+        );
+        const responseLanguage = await api.get(
+          `/repos/${owner}/${repos}/languages`
+        );
+        const responseRepo = await api.get(`/repos/${owner}/${repos}`);
+        const order = Object.keys(responseLanguage.data).sort((a, b) => {
+          return responseLanguage.data[b] - responseLanguage.data[a];
+        });
+        setRepo(responseRepo.data);
+        setRepoIssue(responseIssues.data);
+        setLanguageIssue(order[0]);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  });
+
+  console.log(languageIssue, repoIssue, repo);
+
   return (
-    <Container>
-      <Header />
-      <Body>
-        <ContainerTop>
-          <WrapTitles>
-            <Title>facebook/react</Title>
-            <SubTitle>
-              A declarative, efficient, and flexible JavaScript library for
-              building user interfaces.
-            </SubTitle>
-          </WrapTitles>
-          <Img src={Back} />
-        </ContainerTop>
-        <ContainerSection>
-          <div>
-            <Section>
-              <SectionTitle>88</SectionTitle>
-              <SectionSubTitle>Forks</SectionSubTitle>
-            </Section>
-            <Section>
-              <SectionTitle>88</SectionTitle>
-              <SectionSubTitle>Start</SectionSubTitle>
-            </Section>
-            <SectionLanguage>
-              <SectionTitle>Javascript</SectionTitle>
-              <SectionSubTitle>Issues</SectionSubTitle>
-            </SectionLanguage>
-          </div>
-          <SectionRight>
-            <TitleSectionRight>Issue</TitleSectionRight>
-            <ContainerCard></ContainerCard>
-          </SectionRight>
-        </ContainerSection>
-      </Body>
-    </Container>
+    <Fragment>
+      {isLoading ? (
+        <ContainerLoading>
+          <Loading />
+        </ContainerLoading>
+      ) : (
+        <Container>
+          <Header />
+          <Body>
+            <ContainerTop>
+              <WrapTitles>
+                <Title>{repo.full_name}</Title>
+                <SubTitle>{repo.description}</SubTitle>
+              </WrapTitles>
+              <Img src={repo.owner.avatar_url} />
+            </ContainerTop>
+            <ContainerSection>
+              <div>
+                <Section>
+                  <SectionTitle>{repo.forks_count}</SectionTitle>
+                  <SectionSubTitle>Forks</SectionSubTitle>
+                </Section>
+                <Section>
+                  <SectionTitle>{repo.stargazers_count}</SectionTitle>
+                  <SectionSubTitle>Start</SectionSubTitle>
+                </Section>
+                <SectionLanguage>
+                  <SectionTitle>{languageIssue}</SectionTitle>
+                  <SectionSubTitle>Issues</SectionSubTitle>
+                </SectionLanguage>
+              </div>
+              <SectionRight>
+                <TitleSectionRight>Issue</TitleSectionRight>
+                <ContainerCard>
+                  {repoIssue.map((item) => (
+                    <Card title={item.title} userName={item.user.login} />
+                  ))}
+                </ContainerCard>
+              </SectionRight>
+            </ContainerSection>
+          </Body>
+        </Container>
+      )}
+    </Fragment>
   );
 }

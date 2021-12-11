@@ -9,6 +9,15 @@ export const Container = styled.div`
   overflow-y: hidden;
 `;
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+`;
+
 export const Body = styled.div`
   margin-top: 57px;
   padding: 0px 136px;

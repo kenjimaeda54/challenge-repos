@@ -10,18 +10,18 @@ import {
 
 interface ICardProps {
   title: string;
-  description: string;
+  userName: string;
 }
 
 export default function CardDeveloper({
   title,
-  description,
+  userName,
 }: ICardProps): JSX.Element {
   return (
     <Container>
       <ContainerLeft>
         <TitleDescription>{title}</TitleDescription>
-        <SubTitleDescription>{description}</SubTitleDescription>
+        <SubTitleDescription>{userName}</SubTitleDescription>
       </ContainerLeft>
       <ContainerRight>
         <img src={Back} alt="Icon Back" />

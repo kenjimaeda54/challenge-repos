@@ -15,6 +15,7 @@ export const ContainerLeft = styled.div`
   flex-direction: column;
   gap: 29px;
   padding: 0px 56px;
+  width: 70%;
 `;
 
 export const TitleDescription = styled.h3`

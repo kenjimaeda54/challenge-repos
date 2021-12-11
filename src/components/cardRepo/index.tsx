@@ -26,7 +26,14 @@ export default function CardRepo({
     <Container {...rest}>
       <ContainerLeft>
         <ContainerImg>
-          <img src={imgRepo} width={174} height={185} />
+          <img
+            src={imgRepo}
+            width={174}
+            height={185}
+            style={{
+              borderRadius: 20,
+            }}
+          />
         </ContainerImg>
         <Description>
           <TitleDescription>{title}</TitleDescription>

@@ -1,8 +1,10 @@
-import React, { KeyboardEvent, useState, useRef } from "react";
+import { KeyboardEvent, useState, useRef } from "react";
+import { fetchRepos } from "../../utils";
+import { Loading } from "../../components/loading";
+import api from "../../services/api";
 import Search from "../../assets/Search.svg";
 import Card from "../../components/cardRepo";
 import Header from "../../components/header";
-import Back from "../../assets/back.svg";
 import {
   Container,
   Body,
@@ -14,9 +16,6 @@ import {
   ButtonInput,
   WrapCard,
 } from "./styles";
-import api from "../../services/api";
-import { fetchRepos } from "../../utils";
-import { Loading } from "../../components/loading";
 
 export default function Home(): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -25,6 +24,7 @@ export default function Home(): JSX.Element {
 
   async function handleFetchDataKeyPress(e: KeyboardEvent<HTMLInputElement>) {
     try {
+      console.log(`/repos/${inputRef.current?.value}`);
       if (e.key === "Enter") {
         setIsLoading(true);
         const response = await api.get(`/repos/${inputRef.current?.value}`);
@@ -71,7 +71,8 @@ export default function Home(): JSX.Element {
     }
   }
 
-  console.log(repo);
+  const handleNavigation = () =>
+    (window.location.href = `/details/${inputRef.current?.value}`);
 
   return (
     <Container>
@@ -97,6 +98,7 @@ export default function Home(): JSX.Element {
           {isLoading && <Loading />}
           {!isLoading && repo.id && (
             <Card
+              onClick={handleNavigation}
               title={repo.full_name}
               description={repo.description}
               imgRepo={repo.owner.avatar_url}

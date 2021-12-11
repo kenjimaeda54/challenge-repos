@@ -7,7 +7,7 @@ export default function AppRoutes(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Details />} />
+        <Route path="/details/:owner/:repos" element={<Details />} />
       </Routes>
     </BrowserRouter>
   );
