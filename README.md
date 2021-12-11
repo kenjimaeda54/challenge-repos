@@ -1,5 +1,5 @@
 # React Js challenge Repos Git Hub
-React changelle 2021
+React JS changelle 2021
 Solução para o desafio[challenge by coodesh](https://github.com/nolifretes/Desafio-WEB-React)
 
 
@@ -14,9 +14,9 @@ Consumir api [github](https://docs.github.com/pt/rest/reference/repos), aplicand
 - Styled Component
 - TYpe Script
 
-- Styled component excelente lib de estilizacao em react js ambos trabalham com principo de componentes
-- Type script facilita muito no desenvolvivmento de sofwtare
-- Utilizei a pasagens de parametros por url
+- Styled component excelente lib de estilização principalmente em react js ambos trabalham com princípio de  tudo ser componentes
+- Type script facilita muito no desenvolvimento de software
+- Utilizei a passagens de parâmetros por url
 
 ``` typescript
 //aqui eu recupero eles
@@ -25,7 +25,7 @@ export default function Details(): JSX.Element {
   
  } 
 
-// :owner/:repos--> sao parametros dinamicos que vem pela url
+// :owner/:repos--> são parâmetros dinâmicos que vem pela url
 export default function AppRoutes(): JSX.Element {
   return (
     <BrowserRouter>
@@ -37,8 +37,7 @@ export default function AppRoutes(): JSX.Element {
   );
 }
 
-
-//para enviar e facil, fiz uma interpolacao com o valor passado no input
+//para enviar e fácil, fiz uma interpolação com o valor passado no input
   const handleNavigation = () =>
     (window.location.href = `/details/${inputRef.current?.value}`);
 
@@ -48,8 +47,9 @@ export default function AppRoutes(): JSX.Element {
 
 ##
 
-- Recurso interesante e utilizar acesbilidade, usei a tecla enter do teclado para facilitar a pesquisa
-- Caso esteja no mobille a pessoa consegue iniciar a pesquisa clicando no botao que tem icone de lupa
+- Recurso interessante e utilizar acessibilidade, usei a tecla enter do teclado para facilitar a pesquisa
+- Caso esteja no móbile a pessoa consegue iniciar a pesquisa clicando no botão com ícone de lupa
+- Inclusive o recurso do botão de pesquisa está disponível também na versão desktop
 
 ```  typescript
 
