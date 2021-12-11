@@ -75,4 +75,5 @@ export const WrapCard = styled.div`
   gap: 30px;
   margin-top: 89px;
   margin-bottom: 89px;
+  width: 100%;
 `;

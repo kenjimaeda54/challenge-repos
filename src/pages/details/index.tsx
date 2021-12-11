@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../../components/header";
 import {
   Container,
@@ -18,7 +17,6 @@ import {
   SectionLanguage,
 } from "./styles";
 import Back from "../../assets/back.svg";
-import Card from "../../components/cardDeveloper";
 
 export default function Details(): JSX.Element {
   return (
@@ -52,12 +50,7 @@ export default function Details(): JSX.Element {
           </div>
           <SectionRight>
             <TitleSectionRight>Issue</TitleSectionRight>
-            <ContainerCard>
-              <Card title="Developer Tools issue" description="Zahraamirii" />
-              <Card title="Developer Tools issue" description="Zahraamirii" />
-              <Card title="Developer Tools issue" description="Zahraamirii" />
-              <Card title="Developer Tools issue" description="Zahraamirii" />
-            </ContainerCard>
+            <ContainerCard></ContainerCard>
           </SectionRight>
         </ContainerSection>
       </Body>

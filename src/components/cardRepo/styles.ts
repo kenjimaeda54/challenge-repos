@@ -31,9 +31,10 @@ export const ContainerImg = styled.div`
 export const Description = styled.div`
   display: flex;
   padding: 29px 0px 34px;
-  width: 813px;
+  width: 713px;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export const TitleDescription = styled.h3`
@@ -48,11 +49,12 @@ export const SubTitleDescription = styled.p`
   font-size: 25px;
   line-height: 29px;
   color: ${({ theme }) => theme.colors.black};
+  text-align: left;
 `;
 
 export const ContainerRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 45px;
+  margin-right: 45px;
 `;
