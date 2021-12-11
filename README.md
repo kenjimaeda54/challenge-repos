@@ -1,6 +1,6 @@
 # React Js challenge Repos Git Hub
 React JS changelle 2021
-Solução para o desafio[challenge by coodesh](https://github.com/nolifretes/Desafio-WEB-React)
+Solução para o desafio[desafio-web-react](https://github.com/nolifretes/Desafio-WEB-React)
 
 
 ##  Motivação
@@ -95,6 +95,6 @@ export default function AppRoutes(): JSX.Element {
 ## Como iniciar?
 - Clone o repositório.
 - Faz as instalações das dependências.yarn( yarn install) ou npm (npm install).
-- Para iniciar apenas digite expo start, apos isto leia qr code.
+- Para iniciar apos instalar as dependências apenas npm start ou yarn start
 
 
