@@ -32,7 +32,7 @@ export default function Details(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
+    async function fetchData() {
       try {
         const responseIssues = await api.get(
           `/repos/${owner}/${repos}/issues?per_page=7`
@@ -52,10 +52,11 @@ export default function Details(): JSX.Element {
       } finally {
         setIsLoading(false);
       }
-    })();
-  });
-
-  console.log(languageIssue, repoIssue, repo);
+    }
+    if (isLoading) {
+      fetchData();
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -93,7 +94,11 @@ export default function Details(): JSX.Element {
                 <TitleSectionRight>Issue</TitleSectionRight>
                 <ContainerCard>
                   {repoIssue.map((item) => (
-                    <Card title={item.title} userName={item.user.login} />
+                    <Card
+                      key={item.id}
+                      title={item.title}
+                      userName={item.user.login}
+                    />
                   ))}
                 </ContainerCard>
               </SectionRight>

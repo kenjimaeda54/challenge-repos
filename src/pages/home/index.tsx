@@ -24,7 +24,6 @@ export default function Home(): JSX.Element {
 
   async function handleFetchDataKeyPress(e: KeyboardEvent<HTMLInputElement>) {
     try {
-      console.log(`/repos/${inputRef.current?.value}`);
       if (e.key === "Enter") {
         setIsLoading(true);
         const response = await api.get(`/repos/${inputRef.current?.value}`);
@@ -88,7 +87,7 @@ export default function Home(): JSX.Element {
             autoFocus
             onKeyDown={(e) => handleFetchDataKeyPress(e)}
             placeholder="EX: Facebook/React"
-            maxLength={30}
+            maxLength={35}
           />
           <ButtonInput onClick={handleFetchData}>
             <img src={Search} alt="Img Search" />
